@@ -4,7 +4,7 @@ VPN Gate SSTP 节点检测流水线
 ============================
 1. 获取 VPN Gate 及拓展数据源原始节点
 2. 筛选带 TCP 入口 / SSTP 节点并去重
-3. 并发调用 Cloudflare Worker 校验 (成功以 success=true 为准，并校准落地真实国家)
+3. 并发调用 Cloudflare Worker 校验 
 4. 生成 data.json、index.html、chains.txt、hosts.txt、sub.txt
 """
 
@@ -428,7 +428,7 @@ def build_chains_text(data):
             lines.append(f"{zh}-机房-{i:02d}$sstp://vpn:vpn@{n['host']}:{n['port']}")
     return "\n".join(lines) + "\n"
 
-# 包含图片中全部 87 个优选域名:端口
+#  87 个优选域名:端口
 DEFAULT_EDGE_HOSTS = (
     "auto.dolby.dpdns.org:2096,p.etime.vip:8443,bbs.alipansou.com:2096,cdn.667891.xyz:8443,"
     "cf.92555.xyz:2096,securecircle.com:8443,stores.staples.com:2087,cdn.7zz.cn:443,"
